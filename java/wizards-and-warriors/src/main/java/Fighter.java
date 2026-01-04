@@ -9,7 +9,6 @@ class Fighter {
   }
 }
 
-// TODO: define the Warrior class
 class Warrior extends Fighter {
 
   @Override
@@ -28,7 +27,6 @@ class Warrior extends Fighter {
   }
 }
 
-// TODO: define the Wizard class
 class Wizard extends Fighter {
 
   private boolean isPrepareSpellCalled;
