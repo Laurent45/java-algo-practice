@@ -21,3 +21,5 @@
 **/.classpath
 
 **/.exercism
+
+.idea/
