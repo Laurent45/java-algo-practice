@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class DiamondPrinter {
@@ -8,33 +8,25 @@ class DiamondPrinter {
             throw new IllegalArgumentException("diamond print only allow uppercase letters");
         }
 
-        int sideLength = 1 + 2 * (a - 'A');
-        List<String> diamond = new ArrayList<>(sideLength);
-        StringBuilder row = new StringBuilder(" ".repeat(sideLength));
+        int rowSize = 1 + 2 * (a - 'A');
+        String[] diamond = new String[rowSize];
+        char[] row = new char[rowSize];
+        Arrays.fill(row, ' ');
 
-        row.setCharAt(0, a);
-        row.setCharAt(sideLength - 1, a);
-        diamond.add(row.toString());
-        row.setCharAt(0, ' ');
-        row.setCharAt(sideLength - 1, ' ');
 
-        a--;
-        int shrunkSize = 1;
-        while (a >= 'A') {
-            row.setCharAt(shrunkSize, a);
-            row.setCharAt(sideLength - 1 - shrunkSize, a);
+        for (int idx = 0, middle = rowSize / 2, c = 'A'; idx <= diamond.length / 2; idx++, c++) {
+            row[middle + idx] = (char) c;
+            row[middle - idx] = (char) c;
 
-            diamond.addFirst(row.toString());
-            diamond.addLast(row.toString());
+            String diamondRow = new String(row);
+            diamond[idx] = diamondRow;
+            diamond[diamond.length - 1 - idx] = diamondRow;
 
-            row.setCharAt(shrunkSize, ' ');
-            row.setCharAt(sideLength - 1 - shrunkSize, ' ');
-
-            shrunkSize++;
-            a--;
+            row[middle + idx] = ' ';
+            row[middle - idx] = ' ';
         }
 
-        return diamond;
+        return Arrays.asList(diamond);
     }
 
 }
