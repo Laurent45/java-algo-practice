@@ -62,9 +62,16 @@ Solutions to [Exercism](https://exercism.org/tracks/java) Java track exercises â
 | [Error Handling](java/error-handling) | Checked and unchecked exceptions |
 | [Hello World](java/hello-world) | The classic first exercise |
 
-## Running an exercise
+## Running exercises
+
+Run all exercises from the root:
 
 ```bash
-cd java/<exercise-name>
 ./gradlew test
+```
+
+Run a single exercise:
+
+```bash
+./gradlew :java:<exercise-name>:test
 ```
